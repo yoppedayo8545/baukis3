@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  namespece :staff do
+  namespace :staff do
     root "top#index"
   end
 
-  namespece :admin do
+  namespace :admin do
     root "top#index"
   end
 
-  namespece :customer do
+  namespace :customer do
     root "top#index"
   end
 end
