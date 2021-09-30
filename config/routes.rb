@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespece :staff do
+    root "top#index"
+  end
+
+  namespece :admin do
+    root "top#index"
+  end
+
+  namespece :customer do
+    root "top#index"
+  end
 end
