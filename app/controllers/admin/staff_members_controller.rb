@@ -4,7 +4,7 @@ class Admin::StaffMembersController < Admin::Base
   end
 
   def show
-    staff_member = StafMember.find(params[:id])
+    staff_member = StaffMember.find(params[:id])
     redirect_to [ :edit, :admin, staff_member ]
   end
 
