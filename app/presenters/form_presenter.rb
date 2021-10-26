@@ -1,11 +1,12 @@
-class ModelPresenter
+class FormPresenter
   include HtmlBuilder
 
-  attr_reader :object, :view_context
-  delegate :raw, :link_to, to: :view_context
+  attr_reader :form_builder, :view_context
+  delegate :label, :text_field, :date_field, :password_field,
+           :check_box, :radio_button, :text_area, :object, to: :form_builder
 
-  def initialize(object, view_context)
-    @object = object
+  def initialize(form_builder, view_context)
+    @form_builder = form_builder
     @view_context = view_context
   end
 
@@ -20,6 +21,22 @@ class ModelPresenter
     markup(:div, class: "input-block") do |m|
       m << decorated_label(name, label_text, options)
       m << text_field(name, options)
+      m << errors_messages_for(name)
+    end
+  end
+
+  def password_field_block(name, label_text, options = {})
+    markup(:div, class: "input-block") do |m|
+      m << decorated_label(name, label_text, options)
+      m << password_field(name, options)
+      m << errors_messages_for(name)
+    end
+  end
+
+  def date_field_block(name, label_text, options = {} )
+    markup(:div, class: "imput-block") do |m|
+      m << decorated_label(name, label_text, options)
+      m << date_field(name, options)
       m << errors_messages_for(name)
     end
   end
